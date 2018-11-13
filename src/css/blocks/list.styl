@@ -1,0 +1,26 @@
+.lp-page__list
+    display block
+    margin 0
+    padding 0
+    list-style none
+    
+    &-item
+        position relative
+        display block
+        font-size 1.6rem
+        font-weight 500
+        line-height 3rem
+        color #fff
+        padding 0 0 0 3rem
+        
+        &::before
+            content ''
+            display block
+            absolute top .3rem left 0 width 2rem height 2rem
+            background 50% 50% no-repeat
+            background-size cover
+            
+        for num in 1 2 3 4 5 6 7
+            &--0{num}::before
+                background-image url('/imgs/icon-0' + num + '.svg')
+    
