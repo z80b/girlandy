@@ -23,6 +23,10 @@ body
         width 100%
         min-height 700px
         padding 0
+        
+    @media (max-width: 720px)
+        min-height auto
+        min-width 320px
     
     &__wrapper
         size 100% 100%
@@ -31,22 +35,33 @@ body
         
         @media (max-width: 1024px)
             padding 0 4.5rem
+            
+        @media (max-width: 720px)
+            padding 0
     
     &__logo
         display block
         size 120px 93px
         background url('/imgs/logo.png') 0 0 no-repeat
         background-size contain
-        
+
         @media (max-width: 1024px)
             size 145px 112px
             margin 0 0 0 3rem
-        
+
+        @media (max-width: 720px)
+            size 90px 70px
+                    
     &__body
         padding 6rem 0 0
         
         @media (max-width: 1024px)
             padding 5rem 0 0
+            
+        @media (max-width: 720px)
+            padding 9rem .5rem 3rem
+            background url('/imgs/boxes-mobile.png') 100% 100% no-repeat
+            background-size auto 322px
         
     &__form
         absolute top 16rem right 0 width 43rem height 43rem
@@ -66,6 +81,14 @@ body
                 absolute top 135px left -85px height 380px width 200px
                 background url('/imgs/boxes.png') 100% 100% no-repeat
                 background-size contain
+                
+        @media (max-width: 720px)
+            relative top auto right auto left auto width 100%
+            margin 0
+            
+            &::after, &::before
+                display none
+
         
     &__title
         position relative
@@ -85,10 +108,16 @@ body
             
             @media (max-width: 1024px)
                 left 0
+                
+            @media (max-width: 720px)
+                display none
         
         @media (max-width: 1024px)
             font-size 4rem
             padding 0 0 0 3rem
+            
+        @media (max-width: 720px)
+            font-size 2.4rem
             
     &__subject
         font-size 2.8rem
@@ -122,3 +151,10 @@ body
             left 3rem
             bottom 1rem
             line-height 1.2
+            
+        @media (max-width: 720px)
+            relative top auto right auto left auto bottom auto
+            width 100%
+            text-align center
+            background-color #fff
+            padding 1rem 0
