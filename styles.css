@@ -22,17 +22,23 @@ body {
        -o-background-size: cover;
           background-size: cover;
 }
+.lp-form::before,
+.lp-form::after,
+.lp-form__inner::before,
+.lp-form__inner::after {
+  content: '';
+  background: url("/imgs/horizontal-leds.png") -1rem 50% repeat-x;
+  -webkit-background-size: auto 70px;
+     -moz-background-size: auto 70px;
+       -o-background-size: auto 70px;
+          background-size: auto 70px;
+}
 .lp-form {
-  position: absolute;
-  top: 16rem;
-  right: 0;
-  width: 43rem;
-  height: 43rem;
   display: block;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 3rem;
+  padding: 0;
   background-color: #fff;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
@@ -45,6 +51,11 @@ body {
   line-height: 1.2;
   margin: 0 0 3rem;
 }
+@media (max-width: 1024px) {
+  .lp-form__title {
+    font-size: 2rem;
+  }
+}
 .lp-form__input,
 .lp-form__submit {
   display: block;
@@ -54,8 +65,15 @@ body {
   line-height: 5rem;
   text-align: center;
 }
+@media (max-width: 1024px) {
+  .lp-form__input,
+  .lp-form__submit {
+    line-height: 4rem;
+  }
+}
 .lp-form__input {
   color: #babbbc;
+  outline: none;
   border: solid 1px #8d8d8d;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
@@ -64,6 +82,15 @@ body {
      -moz-box-shadow: inset 0 2px 4px 1px rgba(0,0,0,0.25);
           box-shadow: inset 0 2px 4px 1px rgba(0,0,0,0.25);
   margin: 0 0 1.6rem;
+  -webkit-transition: 0.5s all ease;
+  -o-transition: 0.5s all ease;
+  -moz-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+}
+.lp-form__input:focus {
+  -webkit-box-shadow: inset 0 2px 4px 1px rgba(0,0,0,0.1);
+     -moz-box-shadow: inset 0 2px 4px 1px rgba(0,0,0,0.1);
+          box-shadow: inset 0 2px 4px 1px rgba(0,0,0,0.1);
 }
 .lp-form__submit {
   font-weight: 800;
@@ -77,11 +104,86 @@ body {
      -moz-border-radius: 5px;
           border-radius: 5px;
 }
+@media (min-width: 1024px) {
+  .lp-form::before {
+    position: absolute;
+    top: -2.5rem;
+    left: 0;
+    width: 100%;
+    height: 4.5rem;
+    -webkit-transform: rotate(180deg);
+       -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+         -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  .lp-form::after {
+    position: absolute;
+    bottom: -2.5rem;
+    left: 0;
+    width: 100%;
+    height: 4.5rem;
+  }
+}
+.lp-form__inner {
+  padding: 3rem;
+}
+@media (max-width: 1024px) {
+  .lp-form__inner {
+    padding: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .lp-form__inner::before {
+    position: absolute;
+    top: 0;
+    left: 2.5rem;
+    width: 100%;
+    height: 4.5rem;
+    -webkit-transform: rotate(90deg);
+       -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+         -o-transform: rotate(90deg);
+            transform: rotate(90deg);
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+  }
+  .lp-form__inner::after {
+    position: absolute;
+    top: 0;
+    right: 2.5rem;
+    width: 100%;
+    height: 4.5rem;
+    -webkit-transform: rotate(270deg);
+       -moz-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+         -o-transform: rotate(270deg);
+            transform: rotate(270deg);
+    -webkit-transform-origin: 100% 0;
+       -moz-transform-origin: 100% 0;
+        -ms-transform-origin: 100% 0;
+         -o-transform-origin: 100% 0;
+            transform-origin: 100% 0;
+  }
+}
+@media (max-width: 1024px) {
+  .lp-form {
+    width: 30rem;
+  }
+}
 .lp-page__list {
   display: block;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+@media (max-width: 1024px) {
+  .lp-page__list {
+    padding: 0 0 0 3rem;
+  }
 }
 .lp-page__list-item {
   position: relative;
@@ -137,15 +239,38 @@ body {
   text-align: right;
   padding: 0.5rem 0;
 }
-.lp-top-info__block {
-  float: left;
-  padding: 0 2rem 0 0;
+@media (max-width: 1024px) {
+  .lp-top-info {
+    top: 1rem;
+    right: 3rem;
+  }
 }
 .lp-top-info__title {
   font-weight: 400;
 }
 .lp-top-info__text {
   font-weight: 700;
+}
+.lp-top-info__block {
+  float: left;
+  padding: 0 2rem 0 0;
+}
+@media (max-width: 1024px) {
+  .lp-top-info__block--first {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+    width: 15.5rem;
+    padding: 0;
+  }
+}
+@media (max-width: 1024px) {
+  .lp-top-info__block--first .lp-top-info__title,
+  .lp-top-info__block--first .lp-top-info__text {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #8d8d8d;
+  }
 }
 .lp-top-info__button {
   display: block;
@@ -175,9 +300,31 @@ body {
 .lp-page {
   position: relative;
   width: 1165px;
-  min-height: 600px;
   margin: auto;
-  background: url("/imgs/map.png") 0 0 no-repeat;
+  padding: 0 0 10rem;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+  .lp-page {
+    width: 100%;
+    min-height: 700px;
+    padding: 0;
+  }
+}
+.lp-page__wrapper {
+  width: 100%;
+  height: 100%;
+  background: url("/imgs/map.png") 15% 50% no-repeat;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+  .lp-page__wrapper {
+    padding: 0 4.5rem;
+  }
 }
 .lp-page__logo {
   display: block;
@@ -189,8 +336,63 @@ body {
        -o-background-size: contain;
           background-size: contain;
 }
+@media (max-width: 1024px) {
+  .lp-page__logo {
+    width: 145px;
+    height: 112px;
+    margin: 0 0 0 3rem;
+  }
+}
 .lp-page__body {
   padding: 6rem 0 0;
+}
+@media (max-width: 1024px) {
+  .lp-page__body {
+    padding: 5rem 0 0;
+  }
+}
+.lp-page__form {
+  position: absolute;
+  top: 16rem;
+  right: 0;
+  width: 43rem;
+  height: 43rem;
+}
+@media (max-width: 1024px) {
+  .lp-page__form {
+    position: absolute;
+    top: 28rem;
+    right: 2rem;
+    width: 30rem;
+    height: auto;
+  }
+  .lp-page__form::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    height: 217px;
+    width: 195px;
+    right: 25px;
+    margin: 0 0 -17px;
+    background: url("/imgs/muzik2.png") 100% 100% no-repeat;
+    -webkit-background-size: contain;
+       -moz-background-size: contain;
+         -o-background-size: contain;
+            background-size: contain;
+  }
+  .lp-page__form::before {
+    content: '';
+    position: absolute;
+    top: 135px;
+    left: -85px;
+    height: 380px;
+    width: 200px;
+    background: url("/imgs/boxes.png") 100% 100% no-repeat;
+    -webkit-background-size: contain;
+       -moz-background-size: contain;
+         -o-background-size: contain;
+            background-size: contain;
+  }
 }
 .lp-page__title {
   position: relative;
@@ -214,6 +416,17 @@ body {
   border-top: solid 5rem #fdb53c;
   background-color: rgba(119,141,159,0.42);
 }
+@media (max-width: 1024px) {
+  .lp-page__title::before {
+    left: 0;
+  }
+}
+@media (max-width: 1024px) {
+  .lp-page__title {
+    font-size: 4rem;
+    padding: 0 0 0 3rem;
+  }
+}
 .lp-page__subject {
   font-size: 2.8rem;
   font-weight: 500;
@@ -221,17 +434,44 @@ body {
   padding: 3rem 0 6rem;
   color: #fff;
 }
-.lp-page__muzik {
+@media (max-width: 1024px) {
+  .lp-page__subject {
+    font-size: 2rem;
+    padding: 2rem 0 4rem 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .lp-page__muzik {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 327px;
+    height: 708px;
+    margin: 0 0 0 -14rem;
+    background: url("/imgs/muzik.png") 0 0 no-repeat;
+    -webkit-background-size: contain;
+       -moz-background-size: contain;
+         -o-background-size: contain;
+            background-size: contain;
+    z-index: 2;
+  }
+}
+.lp-page__footer {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  width: 327px;
-  height: 708px;
-  margin: 0 0 0 -14rem;
-  background: url("/imgs/muzik.png") 0 0 no-repeat;
-  -webkit-background-size: contain;
-     -moz-background-size: contain;
-       -o-background-size: contain;
-          background-size: contain;
-  z-index: 2;
+  right: 0;
+  width: 40rem;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 2;
+  color: #444c52;
+}
+@media (max-width: 1024px) {
+  .lp-page__footer {
+    right: auto;
+    left: 3rem;
+    bottom: 1rem;
+    line-height: 1.2;
+  }
 }

@@ -7,16 +7,32 @@
     text-align right
     padding .5rem 0
     
-    &__block
-        float left
-        padding 0 2rem 0 0
-    
+    @media (max-width: 1024px)
+        top 1rem
+        right 3rem
+        
     &__title
         font-weight 400
         
     &__text
         font-weight 700
+    
+    &__block
+        float left
+        padding 0 2rem 0 0
         
+        &--first
+            @media (max-width: 1024px)
+                absolute bottom -1.5rem left 0 width 15.5rem
+                padding 0
+                
+    &__title, &__text
+        ~/__block--first &
+            @media (max-width: 1024px)
+                display inline-block
+                font-size 1.2rem
+                color #8D8D8D
+                
     &__button
         display block
         box-sizing border-box
