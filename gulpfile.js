@@ -11,7 +11,7 @@ gulp.task('styles', () => {
         .src('./src/css/index.styl')
         .pipe(stylus({
             'include css': true,
-            'compress': false,
+            'compress': true,
             'use': [axis()],
             'rawDefine': { 'inline-image': stylus.stylus.url({
                 paths: ['./src/css/imgs']
@@ -24,5 +24,5 @@ gulp.task('styles', () => {
 
 
 gulp.task('default', ['styles'], function() {
-    gulp.watch('src/**/*.*', ['styles']);
+    gulp.watch('src/css/**/*.styl', ['styles']);
 });

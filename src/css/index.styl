@@ -1,20 +1,15 @@
+@import 'components/*.styl'
 @import 'defaults.styl'
 
-html, body
-    font 10px/1 'Roboto', sans-serif
-    size 100% 100%
-    padding 0
-    margin 0
-    
-body
-    background url('/imgs/bg.jpeg') 50% 50%
-    background-size cover
+
+
     
 @import 'blocks/*.styl'
     
 .lp-page
     position relative
     width 1165px
+    height 100%
     margin auto
     padding 0 0 10rem
     box-sizing border-box
@@ -25,6 +20,7 @@ body
         padding 0
         
     @media (max-width: 720px)
+        height auto
         min-height auto
         min-width 320px
     
@@ -32,6 +28,9 @@ body
         size 100% 100%
         background url('/imgs/map.png') 15% 50% no-repeat
         box-sizing border-box
+        
+        &.blur
+            filter blur(20px)
         
         @media (max-width: 1024px)
             padding 0 4.5rem
@@ -64,10 +63,12 @@ body
             background-size auto 322px
         
     &__form
-        absolute top 16rem right 0 width 43rem height 43rem
+        absolute top auto bottom 174px right 0 width 43rem height 43rem
         
         @media (max-width: 1024px)
-            absolute top 28rem right 2rem width 30rem height auto
+            absolute top auto bottom 174px right 2rem
+            width 30rem
+            height auto
             
             &::after
                 content ''
@@ -83,7 +84,8 @@ body
                 background-size contain
                 
         @media (max-width: 720px)
-            relative top auto right auto left auto width 100%
+            relative top auto right auto left auto bottom auto
+            width 100%
             margin 0
             
             &::after, &::before
@@ -139,22 +141,18 @@ body
             z-index 2
         
     &__footer
-        absolute bottom 0 right 0 width 40rem
-        text-align left
-        font-size 1.2rem
-        font-weight 500
-        line-height 2
-        color #444C52
+        absolute bottom 0 right 0 width 40rem height 4rem
+        background url('/imgs/info.png') 0 0 no-repeat
+        background-size contain
         
         @media (max-width: 1024px)
             right auto
             left 3rem
             bottom 1rem
-            line-height 1.2
             
         @media (max-width: 720px)
             relative top auto right auto left auto bottom auto
             width 100%
-            text-align center
+            background-image url('/imgs/info-mobile.png')
+            background-position 50% 50%
             background-color #fff
-            padding 1rem 0

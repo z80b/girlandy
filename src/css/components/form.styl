@@ -1,9 +1,4 @@
-$form-border
-    content ''
-    background url('/imgs/horizontal-leds.png') -1rem 50% repeat-x
-    background-size auto 70px
-           
-.lp-form
+$form
     display block
     box-sizing border-box
     padding 0
@@ -13,6 +8,22 @@ $form-border
     
     @media (max-width: 720px)
         border-radius 0
+        
+    &__close
+        display block
+        absolute top 0 left 100% width 2.2rem height 2.2rem
+        margin 0 0 0 1rem
+        padding 0
+        border none
+        outline none
+        background url('imgs/cross.svg') 50% 50% no-repeat
+        background-size cover
+        cursor pointer
+        
+        @media (max-width: 720px)
+            top 100%
+            left 50%
+            margin 1rem 0 0 -1.1rem
     
     &__title
         font-size 2.8rem
@@ -60,38 +71,12 @@ $form-border
         
         &:hover
             background radial-gradient(42.50px at 50% -9%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #FFBB48
-
-        
-    @media (min-width: 1024px)
-        &::before, &::after
-            @extends $form-border
-            
-        &::before
-            absolute top -2.5rem left 0 width 100% height 4.5rem
-            transform rotate(180deg)
-            
-        &::after
-            absolute bottom -2.5rem left 0 width 100% height 4.5rem
-        
+                
     &__inner
         padding 3rem
         
         @media (max-width: 1024px)
             padding 2rem
-       
-        @media (min-width: 1024px)
-            &::before, &::after
-                @extends $form-border
-                
-            &::before
-                absolute top 0 left 2.5rem width 100% height 4.5rem
-                transform rotate(90deg)
-                transform-origin 0 0
-                
-            &::after
-                absolute top 0 right 2.5rem width 100% height 4.5rem
-                transform rotate(270deg)
-                transform-origin 100% 0
             
     @media (max-width: 1024px)
         width 30rem
