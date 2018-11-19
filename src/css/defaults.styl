@@ -7,3 +7,19 @@ html, body
 body
     background url('/imgs/bg.jpeg') 50% 50%
     background-size cover
+    min-height 780px
+    
+    @media (min-width: 720px)
+    	background-size auto 960px
+    	
+    @media (min-width: 960px)
+    	background-size auto 1024px
+    	
+    @media (min-width: 1024px)
+    	background-size auto 1206px
+    	
+    @media (min-width: 1206px)
+    	background-size auto 1440px
+    	
+    @media (min-width: 1440px)
+    	background-size auto 2560px
