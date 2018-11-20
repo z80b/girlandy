@@ -1,3 +1,12 @@
+function popupAlert(text, type) {
+    $('.js-page-wrapper').addClass('blur');
+    $('.js-alert')
+        .addClass(type || '')
+        .removeClass('hidden')
+        .find('.js-alert-content')
+        .html(text);
+}
+
 function init() {
     $(document)
     .on('click', '.js-open-form', function() {
@@ -9,6 +18,11 @@ function init() {
         $('.js-page-wrapper').removeClass('blur');
         $('.js-popup-form').addClass('hidden');  
     })
+    .on('click', '.js-close-alert', function(event) {
+        event.preventDefault();
+        $('.js-page-wrapper').removeClass('blur');
+        $('.js-alert').addClass('hidden');  
+    })
     .on('submit', '.js-page-form', function(event) {
         event.preventDefault();
         var data = {};
@@ -18,7 +32,7 @@ function init() {
             }
         });
         $.post('/', data).then(function(data) {
-            alert(data.message);
+            popupAlert(data.message);
         });
     });
 }

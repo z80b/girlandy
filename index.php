@@ -16,7 +16,7 @@ if (isset($mailTo) && isset($_POST['sid']) && $_POST['sid'] == $sid) {
     if (mail($mailTo, $_POST['subject'], $message)) {
         dieJson(array(
             'status' => 'ok',
-            'message' => 'Ваш запрос принят в обработку'
+            'message' => 'Спасибо за заявку!<br/>Менеджеры свяжутся с вами в ближайшее время.'
         ));
     } else dieJson(array(
         'status' => 'error',
@@ -70,7 +70,7 @@ if (isset($mailTo) && isset($_POST['sid']) && $_POST['sid'] == $sid) {
                 <div class="lp-form__inner">
                     <h2 class="lp-form__title">Получите оптовый<br/>прайс-лист прямо сейчас!</h2>
                     <input name="sid" type="hidden" value="<?=$sid?>"/>
-                    <input name="subject" type="hidden" value="Запрос прайса"/>
+                    <input name="subject" type="hidden" value="Заявка с сайта girlyandy-optom на Прайс лист"/>
                     <input
                         class="lp-form__input"
                         type="text" name="email"
@@ -102,7 +102,7 @@ if (isset($mailTo) && isset($_POST['sid']) && $_POST['sid'] == $sid) {
             <div class="lp-popup-form__inner">
                 <h2 class="lp-popup-form__title">Оставьте заявку и менеджер<br/>свяжется с Вами в самое<br/>ближайшее время</h2>
                 <input name="sid" type="hidden" value="<?=$sid?>"/>
-                <input name="subject" type="hidden" value="Запрос  связи с менеджером"/>
+                <input name="subject" type="hidden" value="Заявка с сайта girlyandy-optom на консультацию"/>
                 <input
                     class="lp-form__input"
                     type="text" name="email"
@@ -123,6 +123,15 @@ if (isset($mailTo) && isset($_POST['sid']) && $_POST['sid'] == $sid) {
                 <button class="lp-popup-form__submit" type="submit">Отправить</button>
             </div>
         </form>
+    </div>
+    <div class="lp-popup hidden js-alert">
+        <div class="lp-popup__overlay"></div>
+        <div class="lp-popup__alert lp-popup-form">
+            <button class="lp-popup-form__close js-close-alert"></button>
+            <div class="lp-popup__alert-text js-alert-content">
+                
+            </div>
+        </div>
     </div>
 <!— Yandex.Metrika counter —> 
 <script type="text/javascript" > 
