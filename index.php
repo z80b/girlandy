@@ -32,6 +32,7 @@ if (isset($mailTo) && isset($_POST['sid']) && $_POST['sid'] == $sid) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <script src="/js/jquery-1.11.0.min.js"></script>
