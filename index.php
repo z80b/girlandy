@@ -1,4 +1,7 @@
 <?php
+require_once './inc/config.php';
+require_once './inc/autoload.php';
+
 session_start();
 
 $mailTo = '';
@@ -10,21 +13,40 @@ function dieJson($json) {
 }
 
 if (isset($mailTo) && isset($_POST['sid']) && $_POST['sid'] == $sid) {
-
-    $message = $_POST['email'] . "\n" . $_POST['phone'] . "\n" . $_POST['name'];
-
-    if (mail($mailTo, $_POST['subject'], $message)) {
+    if(!isset($_POST['g-recaptcha-response'])) {
         dieJson(array(
-            'status' => 'ok',
-            'message' => 'Спасибо за заявку!<br/>Менеджеры свяжутся с вами в ближайшее время.'
+            'status' => 'error',
+            'message' => 'Вы не человек'
+        ));
+        die();
+    }
+    
+    $reCaptcha = new \ReCaptcha\ReCaptcha(_RECAPTCHA_SECRET_KEY_);    
+    $response = $reCaptcha->setExpectedHostname($_SERVER['SERVER_NAME'])
+        ->setExpectedAction('')
+        ->setScoreThreshold(0.5)
+        ->verify($_POST["g-recaptcha-response"], $_SERVER["REMOTE_ADDR"]);
+    
+    $message = $_POST['email'] . "\n" . $_POST['phone'] . "\n" . $_POST['name'];
+    
+    if (isset($response) && $response->isSuccess()) {
+        if (mail($mailTo, $_POST['subject'], $message)) {
+            dieJson(array(
+                'status' => 'ok',
+                'message' => 'Спасибо за заявку!<br/>Менеджеры свяжутся с вами в ближайшее время.'
+            ));
+        } else dieJson(array(
+            'status' => 'error',
+            'message' => 'Что-то пошло не так, попробуйте еще раз позднее'
         ));
     } else dieJson(array(
         'status' => 'error',
-        'message' => 'Что-то пошло не так, попробуйте еще раз позднее'
+        'message' => 'Вы не человек !!!'
     ));
 
     die();
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -88,6 +110,7 @@ if (isset($mailTo) && isset($_POST['sid']) && $_POST['sid'] == $sid) {
                         name="name"
                         autocomplete="off"
                         placeholder="Ваше имя"/>
+                    <div class="lp-page__recaptcha"></div>
                     <button class="lp-form__submit" type="submit">Отправить</button>
                 </div>
             </form>
@@ -120,6 +143,7 @@ if (isset($mailTo) && isset($_POST['sid']) && $_POST['sid'] == $sid) {
                     name="name"
                     autocomplete="off"
                     placeholder="Ваше имя"/>
+                <div class="lp-page__recaptcha"></div>
                 <button class="lp-popup-form__submit" type="submit">Отправить</button>
             </div>
         </form>
@@ -133,6 +157,20 @@ if (isset($mailTo) && isset($_POST['sid']) && $_POST['sid'] == $sid) {
             </div>
         </div>
     </div>
+<script type="text/javascript">
+    function onloadCallback() {
+        var $recaptcha = document.querySelectorAll('.lp-page__recaptcha');
+        grecaptcha.render($recaptcha[0], {
+          'sitekey' : '<?=_RECAPTCHA_SITE_KEY_?>',
+          'size': 'normal'
+        });
+        grecaptcha.render($recaptcha[1], {
+          'sitekey' : '<?=_RECAPTCHA_SITE_KEY_?>',
+          'size': 'normal'
+        });
+    }
+</script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=ru&onload=onloadCallback&render=explicit" async defer></script>
 <!— Yandex.Metrika counter —> 
 <script type="text/javascript" > 
 (function (d, w, c) { 

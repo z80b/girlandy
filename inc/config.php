@@ -1,0 +1,5 @@
+<?php
+define('_EMAIL_', '');
+define('_RECAPTCHA_SITE_KEY_', '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI');
+define('_RECAPTCHA_SECRET_KEY_', '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe');
+
